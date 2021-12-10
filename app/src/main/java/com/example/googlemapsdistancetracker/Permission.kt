@@ -9,12 +9,12 @@ import java.util.jar.Manifest
 object Permission {
 
 
-    fun hasLocationPermission(context: Context){
+    fun hasLocationPermission(context: Context) =
         EasyPermissions.hasPermissions(
             context,
             android.Manifest.permission.ACCESS_FINE_LOCATION
         )
-    }
+
 
     fun requestLocationPermission(fragment: Fragment){
         EasyPermissions.requestPermissions(

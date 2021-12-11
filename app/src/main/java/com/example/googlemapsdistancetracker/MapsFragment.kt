@@ -1,6 +1,7 @@
 package com.example.googlemapsdistancetracker
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -12,6 +13,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.googlemapsdistancetracker.databinding.FragmentMapsBinding
+import com.example.googlemapsdistancetracker.service.TrackerService
+import com.example.googlemapsdistancetracker.util.Constants.ACTION_SERVICE_START
 import com.example.googlemapsdistancetracker.util.ExtensionFunctions.disable
 import com.example.googlemapsdistancetracker.util.ExtensionFunctions.enable
 import com.example.googlemapsdistancetracker.util.ExtensionFunctions.hide
@@ -107,6 +110,7 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMyLocationButtonC
             }
 
             override fun onFinish() {
+                sendActionCommandToService(ACTION_SERVICE_START)
                 binding.timerTextView.hide()
             }
 
@@ -115,6 +119,15 @@ class MapsFragment : Fragment(),OnMapReadyCallback,GoogleMap.OnMyLocationButtonC
         timer.start()
     }
 
+    private fun sendActionCommandToService(action:String){
+        Intent(
+            requireContext(),
+            TrackerService::class.java
+        ).apply {
+            this.action = action
+            requireContext().startService(this)
+        }
+    }
 
     override fun onMyLocationButtonClick(): Boolean {
         binding.hintTextView.animate().alpha(0f).duration = 1500

@@ -1,10 +1,9 @@
-package com.example.googlemapsdistancetracker
+package com.example.googlemapsdistancetracker.util
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import com.example.googlemapsdistancetracker.Constants.PERMISSION_LOCATION_REQUEST_CODE
+import com.example.googlemapsdistancetracker.util.Constants.PERMISSION_LOCATION_REQUEST_CODE
 import com.vmadalin.easypermissions.EasyPermissions
-import java.util.jar.Manifest
 
 object Permission {
 

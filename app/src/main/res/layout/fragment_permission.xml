@@ -48,7 +48,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/permission_required"
+            android:text="@string/permission_location"
             android:textAlignment="center"
             android:textColor="@color/red"
             android:textSize="26sp"
